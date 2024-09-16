@@ -9,3 +9,8 @@ body {
     background-size: cover;
     font-family: "Roboto", sans-serif;
 }
+
+.fixed-height {
+    height: 500px;
+    object-fit: cover;
+}
