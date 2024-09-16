@@ -19,10 +19,7 @@ class ComicController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
@@ -37,7 +34,8 @@ class ComicController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $comic = Comic::find($id);
+        return view('comics.show', compact('comic'));
     }
 
     /**

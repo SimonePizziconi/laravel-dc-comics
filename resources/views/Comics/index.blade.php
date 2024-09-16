@@ -15,11 +15,12 @@
                     <br>
                     <small>{{ $comic->type }}</small>
                 </div>
+                <a href="{{ route('comics.show', $comic) }}" class="btn btn-warning">Dettaglio</a>
             </div>
         @endforeach
     </div>
 @endsection
 
 @section('titlePage')
-    contatti
+    Fumetti
 @endsection
