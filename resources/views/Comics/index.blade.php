@@ -15,7 +15,8 @@
                     <br>
                     <small>{{ $comic->type }}</small>
                 </div>
-                <a href="{{ route('comics.show', $comic) }}" class="btn btn-warning">Dettaglio</a>
+                <a href="{{ route('comics.show', $comic) }}" class="btn btn-success">Dettaglio</a>
+                <a href="{{ route('comics.edit', $comic) }}" class="btn btn-warning">Modifica</a>
             </div>
         @endforeach
     </div>
