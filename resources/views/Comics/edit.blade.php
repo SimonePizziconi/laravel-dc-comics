@@ -3,24 +3,52 @@
 
 @section('content')
     <div class="container my-5">
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{ route('comics.update', $comic->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="mb-3">
                 <label for="series" class="form-label">Nome Fumetto</label>
-                <input type="text" class="form-control" name="series" id="series" value="{{ $comic->series }}">
+                <input type="text" class="form-control @error('series') is-invalid @enderror" name="series" id="series"
+                    value="{{ old('series', $comic->series) }}">
+                @error('series')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <label for="thumb" class="form-label">Copertina Fumetto</label>
-                <input type="text" class="form-control" name="thumb" id="thumb" value="{{ $comic->thumb }}">
+                <input type="text" class="form-control @error('thumb') is-invalid @enderror" name="thumb"
+                    id="thumb" value="{{ old('thumb', $comic->thumb) }}">
+                @error('thumb')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo Fumetto</label>
-                <input type="text" class="form-control" name="price" id="price" value="{{ $comic->price }}">
+                <input type="text" class="form-control @error('price') is-invalid @enderror" name="price"
+                    id="price" value="{{ old('price', $comic->price) }}">
+                @error('price')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label">Tipo Fumetto</label>
-                <input type="text" class="form-control" name="type" id="type" value="{{ $comic->type }}">
+                <input type="text" class="form-control @error('type') is-invalid @enderror" name="type" id="type"
+                    value="{{ old('type', $comic->type) }}">
+                @error('type')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Invia</button>
             <input class="btn btn-warning" type="reset" value="Reset">
@@ -29,5 +57,5 @@
 @endsection
 
 @section('titlePage')
-    Aggiungi Fumetto
+    Modifica Fumetto
 @endsection
