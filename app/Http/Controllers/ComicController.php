@@ -31,13 +31,12 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $new_comic = new Comic();
-        $new_comic->series = $data['series'];
-        $new_comic->thumb = $data['thumb'];
-        $new_comic->price = $data['price'];
-        $new_comic->type = $data['type'];
-        $new_comic->slug = Helper::generateSlug($new_comic->series, Comic::class);
-        $new_comic->save();
+        $data['slug'] = Helper::generateSlug($data['series'], Comic::class);
+
+        $new_comic = Comic::create($data);
+
+
+
 
         return redirect()->route('comics.show', $new_comic->id);
     }
@@ -78,6 +77,6 @@ class ComicController extends Controller
     {
         $comic->delete();
 
-        return redirect()->route('comics.index')->with('deleted', 'Il fumetto ' . $comic->series . 'è stato eliminato correttamente');
+        return redirect()->route('comics.index')->with('deleted', 'Il fumetto ' . $comic->series . ' è stato eliminato correttamente');
     }
 }
