@@ -18,19 +18,36 @@
             @csrf
             <div class="mb-3">
                 <label for="series" class="form-label">Nome Fumetto</label>
-                <input type="text" class="form-control" name="series" id="series" value="{{ old('series') }}">
+                <input type="text" class="form-control @error('series') is-invalid @enderror" name="series" id="series"
+                    value="{{ old('series') }}">
+                @error('series')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+
             </div>
             <div class="mb-3">
                 <label for="thumb" class="form-label">Copertina Fumetto</label>
-                <input type="text" class="form-control" name="thumb" id="thumb" value="{{ old('thumb') }}">
+                <input type="text" class="form-control @error('thumb') is-invalid @enderror" name="thumb"
+                    id="thumb" value="{{ old('thumb') }}">
+                @error('thumb')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo Fumetto</label>
-                <input type="text" class="form-control" name="price" id="price" value="{{ old('price') }}">
+                <input type="text" class="form-control @error('price') is-invalid @enderror" name="price"
+                    id="price" value="{{ old('price') }}">
+                @error('price')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label">Tipo Fumetto</label>
-                <input type="text" class="form-control" name="type" id="type" value="{{ old('type') }}">
+                <input type="text" class="form-control @error('type') is-invalid @enderror" name="type" id="type"
+                    value="{{ old('type') }}">
+                @error('type')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Invia</button>
             <input class="btn btn-warning" type="reset" value="Reset">
